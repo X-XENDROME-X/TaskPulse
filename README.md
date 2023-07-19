@@ -1,6 +1,5 @@
 # TaskPulse
-
-![todo-icon-0](https://github.com/X-XENDROME-X/TaskPulse/assets/136829548/ba2478a0-d40d-4511-aad7-bba74bb90f59)
+![todo-icon-0_50](https://github.com/X-XENDROME-X/TaskPulse/assets/136829548/7528b365-485a-4aa9-85f4-d79713f7eb9a)
 
 1) Introduction
 TaskPulse is a powerful and intuitive to-do list Chrome extension designed to supercharge your productivity and keep you on top of your tasks. Whether you're a busy professional, a diligent student, or simply someone who loves staying organized, TaskPulse is here to streamline your daily routine and help you achieve more with ease.
