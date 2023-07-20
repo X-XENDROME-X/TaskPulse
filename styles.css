@@ -15,6 +15,25 @@ body {
   margin-left: 30%;
 }
 
+.taskItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* To push the edit and delete buttons to the right */
+  margin-bottom: 5px;
+  color: #ffffff;
+}
+.taskItem.completed span {
+  text-decoration: line-through; /* Apply strikethrough to task text only */
+}
+.taskItem input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+/* Add margin between edit and delete buttons */
+.taskItem button {
+  margin-left: 5px;
+}
+
 h1 {
   color: #ffcc00;
   margin: 0;
@@ -48,10 +67,6 @@ h1 {
   color: #ffffff;
 }
 
-.taskItem.completed {
-  text-decoration: line-through;
-}
-
 .taskItem input[type="checkbox"] {
   margin-right: 5px;
 }
@@ -77,3 +92,61 @@ h1 {
 #addTaskBtn:hover {
   background-color: #ffff00;
 }
+
+#taskList {
+  margin-top: 20px;
+  overflow-x: auto; /* Add horizontal scrolling */
+}
+
+#tasks {
+  list-style-type: style type;;
+  padding: 0;
+  white-space: nowrap; /* Prevent task items from wrapping to new lines */
+}
+
+.taskItem {
+  display:flex; /* Display task items in a row */
+  align-items: center;
+  margin-bottom: 5px;
+  color: #ffffff;
+  min-width: 100%; /* Set a minimum width to ensure horizontal scrolling works */
+  padding-right: 10px; /* Add some space between task text and buttons */
+}
+
+/* Add margin between edit and delete buttons */
+.taskItem button {
+  margin-left: 5px;
+}
+
+.taskItem.editing input[type="text"] {
+  width: 100%;
+  padding: 5px;
+  background-color: #333333;
+  color: #ffffff;
+  border: none;
+  border-bottom: 2px solid #ffcc00;
+  font-size: 14px;
+}
+
+#addTaskBtn,
+#editTaskBtn,
+#deleteTaskBtn {
+  background-color: #ffcc00;
+  color: #000000;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px; /* Add rounded corners to buttons */
+}
+
+#addTaskBtn:hover,
+#editTaskBtn:hover,
+#deleteTaskBtn:hover {
+  background-color: #ffff00;
+}
+
+#editTaskBtn {
+  margin-right: 2px; /* Add some space between edit and delete buttons */
+}
+
+

@@ -22,6 +22,39 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
+  function editTask(task, taskTextElement) {
+    var currentText = task.text;
+    var editInput = document.createElement('input');
+    editInput.type = 'text';
+    editInput.value = currentText;
+  
+    editInput.addEventListener('blur', function() {
+      task.text = editInput.value.trim();
+      if (task.text !== '') {
+        taskTextElement.textContent = task.text;
+        saveTasks();
+      } else {
+        removeTask(taskTextElement.parentElement);
+      }
+    });
+  
+    editInput.addEventListener('keypress', function(event) {
+      if (event.keyCode === 13) {
+        task.text = editInput.value.trim();
+        if (task.text !== '') {
+          taskTextElement.textContent = task.text;
+          saveTasks();
+        } else {
+          removeTask(taskTextElement.parentElement);
+        }
+      }
+    });
+  
+    taskTextElement.textContent = '';
+    taskTextElement.appendChild(editInput);
+    editInput.focus();
+  }
+  
   clearAllBtn.addEventListener('click', function() {
     tasksList.innerHTML = ''; // Clear all tasks from the list
     completedTasksList.innerHTML = ''; // Clear all completed tasks from the list
@@ -48,23 +81,51 @@ document.addEventListener('DOMContentLoaded', function() {
     if (task.completed) {
       taskItem.classList.add('completed');
     }
-
+  
     var checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     checkbox.checked = task.completed;
+    var previousIndex = -1; // Initialize the previous index to -1
+
     checkbox.addEventListener('change', function() {
       task.completed = checkbox.checked;
-      taskItem.classList.toggle('completed');
+      if (task.completed) {
+        taskItem.classList.add('completed');
+        tasksList.removeChild(taskItem);
+        completedTasksList.appendChild(taskItem);
+      } else {
+        taskItem.classList.remove('completed');
+        completedTasksList.removeChild(taskItem);
+        tasksList.insertBefore(taskItem, tasksList.children[previousIndex + 1]);
+      }
       saveTasks();
-      removeTask(taskItem);
     });
-
+  
     var taskText = document.createElement('span');
     taskText.textContent = task.text;
-
+  
+    var editButton = document.createElement('button');
+    editButton.textContent = 'Edit';
+    editButton.addEventListener('click', function() {
+      editTask(task, taskText);
+    });
+  
+    var deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Delete';
+    deleteButton.addEventListener('click', function() {
+      removeTask(taskItem);
+    });
+  
     taskItem.appendChild(checkbox);
     taskItem.appendChild(taskText);
-    tasksList.appendChild(taskItem);
+    taskItem.appendChild(editButton);
+    taskItem.appendChild(deleteButton);
+    if (task.completed) {
+      taskItem.classList.add('completed');
+      completedTasksList.appendChild(taskItem);
+    } else {
+      tasksList.appendChild(taskItem);
+    }
   }
 
   function saveTasks() {
@@ -72,10 +133,12 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function removeTask(taskItem) {
+    var taskText = taskItem.querySelector('span').textContent;
     savedTasks = savedTasks.filter(function(task) {
-      return task.text !== taskItem.textContent;
+      return task.text !== taskText;
     });
     saveTasks();
     taskItem.remove();
   }
+  
 });
