@@ -86,7 +86,8 @@ h1 {
   border: none;
   padding: 5px 10px;
   cursor: pointer;
-  margin-left: 43%;
+  margin-left: 41%;
+  border-radius: 5px;
 }
 
 #addTaskBtn:hover {
@@ -128,9 +129,8 @@ h1 {
   font-size: 14px;
 }
 
-#addTaskBtn,
-#editTaskBtn,
-#deleteTaskBtn {
+#editButton,
+#deleteButton {
   background-color: #ffcc00;
   color: #000000;
   border: none;
@@ -139,13 +139,12 @@ h1 {
   border-radius: 5px; /* Add rounded corners to buttons */
 }
 
-#addTaskBtn:hover,
-#editTaskBtn:hover,
-#deleteTaskBtn:hover {
+#editButton:hover,
+#deleteButton:hover {
   background-color: #ffff00;
 }
 
-#editTaskBtn {
+#editButton {
   margin-right: 2px; /* Add some space between edit and delete buttons */
 }
 

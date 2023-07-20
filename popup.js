@@ -119,13 +119,34 @@ document.addEventListener('DOMContentLoaded', function() {
     editButton.textContent = 'Edit';
     editButton.addEventListener('click', function() {
       editTask(task, taskText);
-    });
+    },
+    editButton.textContent = 'Edit',
+    editButton.style.backgroundColor = '#4285f4',
+    editButton.style.color = '#ffffff',
+    editButton.style.padding = '5px 10px',
+    editButton.style.margin = '5px',
+    editButton.style.border = 'none',
+    editButton.style.cursor = 'pointer',
+    editButton.style.borderRadius = '3px',
+    editButton.style.fontFamily = 'Arial, sans-serif',
+    
+    );
   
     var deleteButton = document.createElement('button');
     deleteButton.textContent = 'Delete';
     deleteButton.addEventListener('click', function() {
       removeTask(taskItem);
-    });
+    },
+    deleteButton.textContent = 'Delete',
+    deleteButton.style.backgroundColor = '#f44336',
+    deleteButton.style.color = '#ffffff',
+    deleteButton.style.padding = '5px 10px',
+    deleteButton.style.margin = '5px',
+    deleteButton.style.border = 'none',
+    deleteButton.style.cursor = 'pointer',
+    deleteButton.style.borderRadius = '3px',
+    deleteButton.style.fontFamily = 'Arial, sans-serif',
+    );
   
     taskItem.appendChild(checkbox);
     taskItem.appendChild(taskText);
