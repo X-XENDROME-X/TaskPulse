@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name": "TaskPulse",
     "version": "2.0",
-    "description": "A Chrome extension for managing your to-do tasks.",
+    "description": "Introducing TaskPulse - The Chrome extension that blends professional productivity with eye-catching flair, helping you conquer your tasks with ease! 🚀📝",
     "action": {
       "default_popup": "popup.html"
     },
