@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
   addTaskBtn.addEventListener('click', function() {
     var taskText = taskInput.value.trim();
     if (taskText !== '') {
-      var task = { text: taskText, completed: false };
+      var task = { text: taskText, completed: false, originalIndex: savedTasks.length };
       renderTask(task);
       savedTasks.push(task);
       saveTasks();
@@ -80,12 +80,15 @@ document.addEventListener('DOMContentLoaded', function() {
     taskItem.classList.add('taskItem');
     if (task.completed) {
       taskItem.classList.add('completed');
+      completedTasksList.appendChild(taskItem);
+    } else {
+      tasksList.appendChild(taskItem);
     }
-  
+
     var checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     checkbox.checked = task.completed;
-    var previousIndex = -1; // Initialize the previous index to -1
+    task.originalIndex = savedTasks.length - 1; // Store the original index when the task is rendered
 
     checkbox.addEventListener('change', function() {
       task.completed = checkbox.checked;
@@ -96,10 +99,18 @@ document.addEventListener('DOMContentLoaded', function() {
       } else {
         taskItem.classList.remove('completed');
         completedTasksList.removeChild(taskItem);
-        tasksList.insertBefore(taskItem, tasksList.children[previousIndex + 1]);
+
+        var taskIndex = savedTasks.indexOf(task);
+        var originalIndex = task.originalIndex;
+        if (taskIndex > originalIndex) {
+          tasksList.insertBefore(taskItem, tasksList.children[originalIndex + 1]);
+        } else {
+          tasksList.insertBefore(taskItem, tasksList.children[originalIndex]);
+        }
       }
       saveTasks();
     });
+
   
     var taskText = document.createElement('span');
     taskText.textContent = task.text;
@@ -120,12 +131,6 @@ document.addEventListener('DOMContentLoaded', function() {
     taskItem.appendChild(taskText);
     taskItem.appendChild(editButton);
     taskItem.appendChild(deleteButton);
-    if (task.completed) {
-      taskItem.classList.add('completed');
-      completedTasksList.appendChild(taskItem);
-    } else {
-      tasksList.appendChild(taskItem);
-    }
   }
 
   function saveTasks() {
