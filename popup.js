@@ -124,11 +124,12 @@ document.addEventListener('DOMContentLoaded', function() {
     editButton.style.backgroundColor = '#4285f4',
     editButton.style.color = '#ffffff',
     editButton.style.padding = '5px 10px',
-    editButton.style.margin = '5px',
+    editButton.style.margin = '2px',
     editButton.style.border = 'none',
     editButton.style.cursor = 'pointer',
     editButton.style.borderRadius = '3px',
     editButton.style.fontFamily = 'Arial, sans-serif',
+    editButton.style.position = 'relative'
     
     );
   
@@ -141,11 +142,12 @@ document.addEventListener('DOMContentLoaded', function() {
     deleteButton.style.backgroundColor = '#f44336',
     deleteButton.style.color = '#ffffff',
     deleteButton.style.padding = '5px 10px',
-    deleteButton.style.margin = '5px',
+    deleteButton.style.margin = '2px',
     deleteButton.style.border = 'none',
     deleteButton.style.cursor = 'pointer',
     deleteButton.style.borderRadius = '3px',
     deleteButton.style.fontFamily = 'Arial, sans-serif',
+    
     );
   
     taskItem.appendChild(checkbox);
