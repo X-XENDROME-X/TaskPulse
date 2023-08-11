@@ -1,16 +1,14 @@
 {
-    "manifest_version": 3,
-    "name": "TaskPulse",
-    "version": "2.0",
-    "description": "Introducing TaskPulse which blends professional productivity with eye-catching flair, helping you conquer your tasks with ease! 🚀📝",
-    "action": {
+  "manifest_version": 3,
+  "name": "TaskPulse",
+  "version": "2.0",
+  "description": "Introducing TaskPulse which blends professional productivity with eye-catching flair, helping you conquer your tasks with ease! 🚀📝",
+  "action": {
       "default_popup": "popup.html"
-    },
-    "icons": {
+  },
+  "icons": {
       "16": "icon16.png",
       "48": "icon48.png",
       "128": "icon128.png"
-    },
-    "permissions": ["storage"]
   }
-  
+}
